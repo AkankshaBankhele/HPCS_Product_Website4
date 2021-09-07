@@ -3,8 +3,8 @@
  date_default_timezone_set("Asia/Calcutta");   //India time (GMT+5:30)
 
 require_once('../config/config.php');
-
-  $name = $_POST["name"];
+filter_input(INPUT_POST, 'name')
+  $name = filter_input(INPUT_POST, 'name');
   $platf = $_POST["platf"];
   $category = $_POST["category"];
     $validity = $_POST["validity"];
