@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 145%;
+  width: 160px;
+  position: absolute;
+  z-index: 1;
+  top: 68px;
+  left: 0px;
+  background-color: 	#2ab4ec;
+  overflow-x: hidden;
+    
+}
+
+.sidenav .div {
+  /* padding: 22px 30px 16px 16px; */
+  /* padding: 6px 8px 6px 16px; */
+  padding: 11.5px 16px;
+  text-decoration: none;
+  color: white;
+  display: block;
+  height:45px;
+  cursor:pointer;
+  border-bottom: 2px solid white;
+  
+}
+
+.sidenav .div:hover {
+  background-color: #04517d;
+}
+
+/* .main {
+  margin-left: 160px; 
+  font-size: 28px; 
+  padding: 0px 10px;
+} */
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.active {
+  background-color: #04517d;
+}
+
+.togbtn {
+    position: absolute;
+    left: 160px;
+    top: 68px;
+    cursor: pointer;
+    background-color: #2ab4ec;
+    padding-top: 12px;
+    padding-left: 5px;
+    border-bottom-right-radius: 100px;
+    border-top-right-radius: 100px;
+    color: white;
+    width: 29px;
+    height: 43px;
+    border-left: 1.5px solid white;
+}
+
+.main {
+    margin-left: 220px;
+    padding-top: 50px;
+}
+
+
+
+
+
+.dropdown-content1 {
+  display: none;
+  position: absolute;
+  background-color: 	#2ab4ec;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
+  z-index: 1;
+
+  position: absolute;
+  left: 162px;
+  top: 115px;
+}
+
+.dropdown-content1 a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  border-bottom: 2px solid white;
+  display: block;
+}
+
+.dropdown-content1 a:hover {background-color:#04517d;}
+
+.dropdown1:hover .dropdown-content1 {display: block;}
+
+.picon {
+  position: absolute;
+  right: 8px;
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+<div class="sidenav">
+  <a href="./home.php" class="dashboard div"><i class="fa fa-home nicon" aria-hidden="true"></i>&nbsp;&nbsp;<span class="ntxt">Dashboard</span></a>
+  <a class=" dropdown1 div" class="products div"><i class="fa fa-credit-card nicon" aria-hidden="true"></i>&nbsp;&nbsp;<span class="ntxt">Products</span>
+    <i class="fa fa-chevron-right picon"></i>
+  </a>
+  <a href="#" class="users div"><i class="fa fa-users nicon" aria-hidden="true"></i>&nbsp;&nbsp;<span class="ntxt">Clients</span></a>
+  <a href="./tags.php" class="tags div"><i class="fa fa-tag nicon" aria-hidden="true"></i>&nbsp;&nbsp;<span class="ntxt">Tags</span></a>
+
+  <a href="./settings.php" class="settings div"><i class="fa fa-cogs nicon" aria-hidden="true"></i>&nbsp;&nbsp;<span class="ntxt">Settings</span></a>
+</div>
+</div>
+<div class="dropdown-content1">
+  <a href="./addproduct.php"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Add Product</a>
+  <a href="./updateproduct.php"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;&nbsp;Update Product</a>
+  <a href="./deleteproduct.php"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Delete Product</a>
+</div>
+<div class="togbtn">
+  <i class="fa fa-chevron-left licon"></i>
+</div>
+
+<script>
+
+  var flag = 0;
+  var pf =0;
+
+  $(".togbtn").click(function(){
+    if(flag==0){
+      $(".ntxt").css("display", "none");
+      $(".subcaticon").css("display", "none");
+      $(".nicon").css("margin-left", "-3px");
+      $(".sidenav").animate({"width":"46px"});
+      $(".main").animate({"margin-left":"100px"});
+      $(".togbtn").animate({"left":"46px"});
+      $(".picon").css("display", "none");
+      if(pf==0){
+       $(".dropdown-content1").css("display", "none");
+      }else{
+        $(".dropdown-content1").css("display", "initial");
+      }
+      $(".dropdown-content1").animate({"left":"47px"});
+
+      flag=1;
+    }else if(flag==1){
+      $(".nicon").css("display", "none");
+      $(".subcaticon").css("display", "none");
+      $(".sidenav").animate({"width":"0px"});
+      $(".main").animate({"margin-left":"50px"});
+      $(".togbtn").animate({"left":"0px"});
+      $(".licon").addClass("fa-chevron-right");
+      $(".licon").removeClass("fa-chevron-left");
+      $(".dropdown-content1").css("display", "none");
+
+      flag=2;
+    }else if(flag==2){
+      $(".ntxt").css("display", "initial");
+       $(".subcaticon").css("display", "initial");
+      
+      $(".nicon").css("display", "initial");
+      $(".nicon").css("margin-left", "0px");
+      $(".sidenav").animate({"width":"160px"});
+      $(".main").animate({"margin-left":"220px"});
+      $(".togbtn").animate({"left":"160px"});
+      $(".licon").addClass("fa-chevron-left");
+      $(".licon").removeClass("fa-chevron-right");
+      $(".picon").css("display", "initial");
+      if(pf==0){
+       $(".dropdown-content1").css("display", "none");
+      }else{
+        $(".dropdown-content1").css("display", "initial");
+      }
+
+      $(".dropdown-content1").animate({"left":"162px"});
+
+      flag=0;
+    }
+
+  });
+
+  
+
+  $('.dropdown1').click(function () {
+    if(pf==0){
+      $('.dropdown-content1').show();
+      $(".picon").addClass("fa-chevron-left");
+      $(".picon").removeClass("fa-chevron-right");
+      pf =1;  
+    }else{
+      $('.dropdown-content1').hide();
+      $(".picon").addClass("fa-chevron-right");
+      $(".picon").removeClass("fa-chevron-left");
+      pf =0;  
+    }
+  });
+
+</script>
+   
+</body>
+</html> 
