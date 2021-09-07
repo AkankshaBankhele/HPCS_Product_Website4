@@ -1,0 +1,40 @@
+body
+{
+    background-color: #e1e1e1;;
+}
+.login_form
+{
+    margin-top: 150px;
+    background: white;
+    padding: 25px;
+    /* box-shadow: 2px 1px 36px 5px lightyellow; */
+        border-radius: 10px;
+}
+.signup_form
+{
+    margin-top: 150px;
+    background: white;
+    padding: 25px;
+    /* box-shadow: 2px 1px 36px 5px lightyellow; */
+        border-radius: 10px;
+}
+.error{
+    /* //background:darksalmon; */
+    color:red;
+    /* padding:10px; */
+    width:95%;
+    /* border-radius: 5px; */
+    /* margin:20px; */
+}
+h1{
+    text-align:left;
+    color:blue;
+    padding: 50px 15px;
+
+}
+
+.hello {
+    margin-top: 25px;
+    margin-bottom: 1rem;
+    margin-left: 10px;
+}
