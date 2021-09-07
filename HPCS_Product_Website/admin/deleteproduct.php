@@ -89,18 +89,18 @@ require_once("./html/sidenavbar.html");
             while( $row = mysqli_fetch_assoc($resultSet) ) { $i++; ?>
                <tr id="<?php echo $row ['sl']; ?>">
                  <td class="sl1"><?php echo $i; ?></td>
-                 <td contenteditable style="cursor:text;" class="tag_name"><?php echo $row ['name']; ?></td>
-                 <td contenteditable style="cursor:text;" class="tag_name"><?php echo $row ['Platform']; ?></td>
-                 <td contenteditable style="cursor:text;" class="tag_name"><?php echo $row ['category']; ?></td>
-                 <td contenteditable style="cursor:text;" class="tag_name"><?php echo $row ['description']; ?></td>
-                 <td contenteditable style="cursor:text;" class="tag_name"><?php echo $row ['input_description']; ?></td>
-                 <td class="tname" id="tname" contenteditable style="cursor:text;" class="tag_name"><text id="abc" class="abc" style='display: none'><?php echo $row['tags']; ?></text><button type="button" class="btn btn-light new"><i class="fa fa-ellipsis-h" aria-hidden="true" title="New" ></i></button></td>
-                 <td contenteditable style="cursor:text;" class="tag_name"><?php echo $row ['cost']; ?></td>
-                 <td contenteditable style="cursor:text;" class="tag_name"><?php echo $row ['discount']; ?></td>
-                 <td contenteditable style="cursor:text;" class="tag_name"><?php echo $row ['image']; ?></td>
-                 <td contenteditable style="cursor:text;" class="tag_name"><?php echo $row ['userguide']; ?></td>
-                 <td contenteditable style="cursor:text;" class="tag_name"><?php echo $row ['productfile']; ?></td>
-                 <td><span style="display:none;"><?php echo $row['sl']; ?></span><button type="button" class="btn btn-light delete" data-toggle="modal" style="color:red;"data-target="#myModal"><i class="fa fa-trash" aria-hidden="true" title="Delete"></i></button></td>
+                 <td contenteditable style="cursor:text;" class="tag_name"><?php print_r( $row ['name']); ?></td>
+                 <td contenteditable style="cursor:text;" class="tag_name"><?php print_r( $row ['Platform']); ?></td>
+                 <td contenteditable style="cursor:text;" class="tag_name"><?php print_r( $row ['category']); ?></td>
+                 <td contenteditable style="cursor:text;" class="tag_name"><?php print_r( $row ['description']); ?></td>
+                 <td contenteditable style="cursor:text;" class="tag_name"><?php print_r( $row ['input_description']); ?></td>
+                 <td class="tname" id="tname" contenteditable style="cursor:text;" class="tag_name"><text id="abc" class="abc" style='display: none'><?php print_r( $row['tags']); ?></text><button type="button" class="btn btn-light new"><i class="fa fa-ellipsis-h" aria-hidden="true" title="New" ></i></button></td>
+                 <td contenteditable style="cursor:text;" class="tag_name"><?php print_r( $row ['cost']); ?></td>
+                 <td contenteditable style="cursor:text;" class="tag_name"><?php print_r( $row ['discount']); ?></td>
+                 <td contenteditable style="cursor:text;" class="tag_name"><?php print_r( $row ['image']); ?></td>
+                 <td contenteditable style="cursor:text;" class="tag_name"><?php print_r( $row ['userguide']); ?></td>
+                 <td contenteditable style="cursor:text;" class="tag_name"><?php print_r( $row ['productfile']); ?></td>
+                 <td><span style="display:none;"><?php print_r( $row['sl']); ?></span><button type="button" class="btn btn-light delete" data-toggle="modal" style="color:red;"data-target="#myModal"><i class="fa fa-trash" aria-hidden="true" title="Delete"></i></button></td>
                </tr>
             <?php } ?>
         </tbody>
