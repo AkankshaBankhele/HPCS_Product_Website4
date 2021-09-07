@@ -3,8 +3,8 @@
 include "config/config.php";
 if(isset($_POST['username']) ){
     
-    $username =$_POST['username'];
-    $password =$_POST['password'];
+    $username =filter_input(INPUT_POST, 'username');
+    $password =filter_input(INPUT_POST, 'password');
 
         $sql="SELECT * FROM admin_users WHERE username='$username' AND password='$password'  ";
         $result=mysqli_query($conn,$sql);
@@ -20,11 +20,11 @@ if(isset($_POST['username']) ){
                 if($row['username']=="admin"){
                     $_SESSION['name']="admin";
                    
-                    echo "1";
+                    print_r("1") ;
                     
                 }else{
                     $_SESSION['name']="user";
-                    echo "3";
+                     print_r( "3");
                 }
                 
                
@@ -32,11 +32,11 @@ if(isset($_POST['username']) ){
                 
             }
             else{
-                echo "2";
+                 print_r( "2");
             }
         }
             else{
-                echo "2";
+                 print_r( "2");
 
             }
     
