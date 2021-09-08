@@ -3,7 +3,7 @@
 
 session_start();
 
-if(isset($_SESSION['id']) && isset($_SESSION['username'])){
+if(!filter_var('id', FILTER_SANITIZE_STRING)===false && !filter_var('username', FILTER_SANITIZE_STRING)===false){
 ?>
 
 <!DOCTYPE html>
@@ -238,8 +238,8 @@ border: 1px solid lightgrey !important;
 
 <?php
 
-require_once("./html/header.html");
-require_once("./html/sidenavbar.html");
+include_once("./html/header.html");
+include_once("./html/sidenavbar.html");
 ?>
   <!-- <form action="" method="post" name="form" style="position: element(#texttag1); transform: translateY(-100%);">  
   <div class="input-wrapper">
@@ -268,7 +268,7 @@ require_once("./html/sidenavbar.html");
       $a=mysqli_query($conn,"SELECT * FROM platform");
       while($row=mysqli_fetch_array($a))     {
         ?>
-          <option ><?php echo $row["plt_name"];?></option>
+          <option ><?php print_r( $row["plt_name"]);?></option>
         <?php
       }
        ?>
@@ -298,7 +298,7 @@ require_once("./html/sidenavbar.html");
       $a=mysqli_query($conn,"SELECT `validity` FROM validity_price");
       while($row=mysqli_fetch_array($a))     {
         ?>
-          <option ><?php echo $row["validity"];?></option>
+          <option ><?php print_r( $row["validity"]);?></option>
         <?php
       }
        ?>
@@ -315,7 +315,7 @@ require_once("./html/sidenavbar.html");
       $a=mysqli_query($conn,"SELECT `price` FROM validity_price");
       while($row=mysqli_fetch_array($a))     {
         ?>
-          <option ><?php echo $row["price"];?></option>
+          <option ><?php print_r( $row["price"]);?></option>
         <?php
       }
        ?>
@@ -325,7 +325,7 @@ require_once("./html/sidenavbar.html");
       $a=mysqli_query($conn,"SELECT `cur` FROM validity_price");
       while($row=mysqli_fetch_array($a))     {
         ?>
-          <option ><?php echo $row["cur"];?></option>
+          <option ><?php print_r( $row["cur"]);?></option>
         <?php
       }
        ?>
@@ -377,7 +377,7 @@ require_once("./html/sidenavbar.html");
       
       while($row=mysqli_fetch_array($a))  {
         ?>
-         <!-- <text id="texttag"class="tag1"><input type="text" class="text12" wrap="off" name="b_destinations[]" id="b_destinations[]" value="<?php echo $row["tag_name"];?>" style="word-break: break-word; color:rgb(16 41 165);"  >&nbsp;&nbsp;&nbsp;<button class= "cross1 ab" style="color:white;"onclick=fun()><i class="fa fa-times icon"></i></button></text> -->
+         <!-- <text id="texttag"class="tag1"><input type="text" class="text12" wrap="off" name="b_destinations[]" id="b_destinations[]" value="<?php print_r( $row["tag_name"]);?>" style="word-break: break-word; color:rgb(16 41 165);"  >&nbsp;&nbsp;&nbsp;<button class= "cross1 ab" style="color:white;"onclick=fun()><i class="fa fa-times icon"></i></button></text> -->
         <?php
       }
     
