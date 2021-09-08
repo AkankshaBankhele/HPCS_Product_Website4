@@ -4,7 +4,7 @@ class SessionObject
     public $vars;
 
     public function __construct() {
-        $this->vars = &$_SESSION; //this will still trigger a phpmd warning
+        $this->vars = &$_SESSION; 
     }
 }
 
@@ -12,7 +12,8 @@ $session = new SessionObject();
 
  session_start();
 include "config/config.php";
-if(isset($_POST['username']) ){
+
+if(!filter_var('username', FILTER_SANITIZE_STRING)===false){
     
     $username =filter_input(INPUT_POST, 'username');
     $password =filter_input(INPUT_POST, 'password');
