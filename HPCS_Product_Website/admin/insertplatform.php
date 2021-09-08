@@ -5,7 +5,7 @@
 require_once('../config/config.php');
 
 
-  $plt_name = $_POST["plt_name"];
+  $plt_name = filter_input(INPUT_POST, 'plt_name');
 
  
   $sql = "INSERT INTO `platform`( `plt_name`) VALUES ('".$plt_name."') ";
@@ -20,6 +20,6 @@ require_once('../config/config.php');
     $sl = $row["plt_id"];
   }
 
-  echo $sl;
+  print_r($sl);
   
 ?>
