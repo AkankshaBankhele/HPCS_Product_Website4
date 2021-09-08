@@ -3,7 +3,8 @@
 
 session_start();
 
-if(!filter_var('id', FILTER_SANITIZE_STRING)===false && !filter_var('username', FILTER_SANITIZE_STRING)===false){
+if(isset($_SESSION['id']) && isset($_SESSION['username'])){
+   
 ?>
 
 <!DOCTYPE html>
