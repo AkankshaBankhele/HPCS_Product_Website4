@@ -5,7 +5,7 @@
 require_once('../config/config.php');
 
 
-  $tag_name = $_POST["tag_name"];
+  $tag_name = filter_input(INPUT_POST, 'tag_name');
 
  
   $sql = "INSERT INTO `tag`( `tag_name`) VALUES ('".$tag_name."') ";
@@ -20,6 +20,6 @@ require_once('../config/config.php');
     $sl = $row["tag_id"];
   }
 
-  echo $sl;
+  print_r($sl);
   
 ?>
