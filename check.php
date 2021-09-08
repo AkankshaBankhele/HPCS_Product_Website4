@@ -1,110 +1,15 @@
 <?php
-class superglobals
+class SessionObject
 {
-    private $_SERVER;
-    private $_POST;
-    private $_GET;
-    private $_SESSION;
+    public $vars;
 
-    public function __construct()
-    {
-        $this->define_superglobals();
+    public function __construct() {
+        $this->vars = &$_SESSION; //this will still trigger a phpmd warning
     }
-    /**
-     * Returns a key from the superglobal,
-     * as it was at the time of instantiation.
-     *
-     * @param $key
-     * @return mixed
-     */
-    public function get_SERVER($key = null)
-    {
-        if (null !== $key) {
-            return (isset($this->_SERVER["$key"])) ? $this->_SERVER["$key"] : null;
-        } else {
-            return $this->_SERVER;
-        }
-    }
-    /**
-     * Returns a key from the superglobal,
-     * as it was at the time of instantiation.
-     *
-     * @param $key
-     * @return mixed
-     */
-    public function get_POST($key = null)
-    {
-        if (null !== $key) {
-            return (isset($this->_POST["$key"])) ? $this->_POST["$key"] : null;
-        } else {
-            return $this->_POST;
-        }
-    }
-    /**
-     * Returns a key from the superglobal,
-     * as it was at the time of instantiation.
-     *
-     * @param $key
-     * @return mixed
-     */
-    public function get_GET($key = null)
-    {
-        if (null !== $key) {
-            return (isset($this->_GET["$key"])) ? $this->_GET["$key"] : null;
-        } else {
-            return $this->_GET;
-        }
-    }
-    /**
-     * Returns a key from the superglobal,
-     * as it was at the time of instantiation.
-     *
-     * @param $key
-     * @return mixed
-     */
-    public function get_SESSION($key = null)
-    {
-        if (null !== $key) {
-            return (isset($this->_SESSION["$key"])) ? $this->_SESSION["$key"] : null;
-        } else {
-            return $this->_SESSION;
-        }
-    }
-    /**
-     * Function to define superglobals for use locally.
-     * We do not automatically unset the superglobals after
-     * defining them, since they might be used by other code.
-     *
-     * @return mixed
-     */
-    private function define_superglobals()
-    {
-
-        // Store a local copy of the PHP superglobals
-        // This should avoid dealing with the global scope directly
-        // $this->_SERVER = $_SERVER;
-        $this->_SERVER = (isset($_SERVER)) ? $_SERVER : null;
-        $this->_POST = (isset($_POST)) ? $_POST : null;
-        $this->_GET = (isset($_GET)) ? $_GET : null;
-        $this->_SESSION = (isset($_SESSION)) ? $_SESSION : null;
-
-    }
-    /**
-     * You may call this function from your compositioning root,
-     * if you are sure superglobals will not be needed by
-     * dependencies or outside of your own code.
-     *
-     * @return void
-     */
-    public function unset_superglobals()
-    {
-        unset($_SERVER);
-        unset($_POST);
-        unset($_GET);
-        unset($_SESSION);
-    }
-
 }
+
+$session = new SessionObject();
+
  session_start();
 include "config/config.php";
 if(isset($_POST['username']) ){
@@ -120,16 +25,19 @@ if(isset($_POST['username']) ){
             if($row["username"]==filter_input(INPUT_POST, 'username') && $row["password"]==filter_input(INPUT_POST, 'password'))
             {
              
-                $_SESSION['id']=$row['id'];
-                $_SESSION['username']=$row['username'];
+               $session->vars['id'] =$row['id'];
+               $session = new SessionObject();
+                $session->vars['username']=$row['username'];
                 
                 if($row['username']=="admin"){
-                    $_SESSION['name']="admin";
+                    $session = new SessionObject();
+                    $session->vars['name']="admin";
                    
                     print_r("1") ;
                     
                 }else{
-                    $_SESSION['name']="user";
+                    $session = new SessionObject();
+                 $session->vars['name']="user";
                      print_r( "3");
                 }
                 
@@ -150,6 +58,6 @@ if(isset($_POST['username']) ){
 }
 else{
      header("Location: http://localhost/form/admin/login.php");
-    die();
+    // die();
 }
 ?>
