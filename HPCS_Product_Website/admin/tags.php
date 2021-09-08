@@ -85,9 +85,9 @@ require_once("./html/sidenavbar.html");
             $i =0;
             while( $row = mysqli_fetch_assoc($resultSet) ) { $i++; ?>
                <tr>
-                 <td class="sl"><?php echo $i; ?></td>
-                 <td contenteditable style="cursor:text;" class="tag_name up"><span style="display:none;"><?php echo $row['tag_id'];?></span><text><?php echo $row ['tag_name']; ?></text><span class="fa fa-check c2"></span></td>
-                 <td><span style="display:none;"><?php echo $row['tag_id']; ?></span><button type="button" class="btn  delete" data-toggle="modal" data-target="#myModal"><i class="fa fa-trash d1" aria-hidden="true" title="Delete"></i></button></td>
+                 <td class="sl"><?php print_r( $i );?></td>
+                 <td contenteditable style="cursor:text;" class="tag_name up"><span style="display:none;"><?php print_r( $row['tag_id']);?></span><text><?php print_r( $row ['tag_name']); ?></text><span class="fa fa-check c2"></span></td>
+                 <td><span style="display:none;"><?php print_r( $row['tag_id']); ?></span><button type="button" class="btn  delete" data-toggle="modal" data-target="#myModal"><i class="fa fa-trash d1" aria-hidden="true" title="Delete"></i></button></td>
                </tr>
             <?php } ?>
         </tbody>
